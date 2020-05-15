@@ -1,0 +1,22 @@
+CREATE DATABASE news;
+
+USE news;
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` char(8) DEFAULT NULL,
+  `password` char(16) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `u_id` int(11) DEFAULT NULL,
+  `n_name` varchar(50) DEFAULT NULL,
+  `n_intro` text,
+  `n_createtime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `u_id` (`u_id`),
+  CONSTRAINT `news_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
